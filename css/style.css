@@ -156,12 +156,13 @@ main {
 .img2, .img3, .img4, .img6, .img7, .img8 { background-color: darkgray; }
 
 .img2 img, .img3 img, .img4 img,
-.img6 img, .img7 img, .img8 img,
-.img5 img {
+.img6 img, .img7 img, .img8 img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
+
+
 
 /* ========== SEÇÃO 3 ========== */
 .secao3 {
@@ -175,14 +176,14 @@ main {
 
 .img5 {
     flex: 1 1 300px;
-    max-width: 500px;
-    aspect-ratio: 5 / 3;
+    max-width: clamp(300px, 32vw, 450px);
     background-color: darkgray;
 }
 .img5 img {
-    object-position: left center;
+    width: 100%;
+    height: auto;
 }
-/* imagem que compõe o conteiner da img5 alinhar junto da margem dos objetos anteriores  */
+
 
 .textsec3 {
     flex: 1 1 300px;
@@ -206,9 +207,6 @@ main {
 .fixed {
 
     position: fixed;
-   /*  right: 10px;
-    bottom: 10px;
-    width: 80px; */
      right: 1vw;
     bottom: 1vw;
     width: 6vw;
@@ -232,15 +230,37 @@ footer { padding: 0 clamp(16px, 4vw, 40px); }
         white-space: nowrap;              /* "Fale conosco" não quebra em duas linhas */
     }
 
+.img1{
+        max-width: 450px;
+        margin-inline: auto;
+    }
+    
+     .textsec3 {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .img5 {
+        flex: 1 1 100%;       /* a caixa ocupa a linha toda */
+        max-width: 450px;     /* teto, igual ao .img1 */
+        margin-inline: auto;  /* centraliza quando bater no teto */
+    order: 1;   
+
+    }
+    
+    .img5 img {
+       height: auto;
+    }
+
     /* faixas viram carrossel: cada imagem ocupa 75% da tela e dá pra arrastar */
     .imgsecao2 > div,
     .imgsecao4 > div {
         flex: 0 0 75%;
     }
 
-    .textsec3 {
-        text-align: left;
-        align-items: flex-start;
-    }
-
+   .fixed {
+      right: clamp(8px, 1vw, 16px);
+    bottom: clamp(8px, 1vw, 16px);
+    width: clamp(48px, 6vw, 80px);
+   }
 }
